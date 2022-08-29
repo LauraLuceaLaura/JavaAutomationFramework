@@ -74,6 +74,9 @@ public class RegisterPage extends BasePage{
         @FindBy(xpath = "//a[text()='Windows']")
         private WebElement windowElement;
 
+        @FindBy(xpath = "//a[text()='Frames']")
+        private WebElement frameElement;
+
         public void registerProcess(String firstName, String lastName, String adress, String email, String phone, String skill,
                                     String year, String month, String day, String password, String confirmPassword, String country, String language)
         {
@@ -124,6 +127,13 @@ public class RegisterPage extends BasePage{
             elementMethod.clickElement(windowElement);
             pageMethod.navigatetoURL("https://demo.automationtesting.in/Windows.html");
 
+        }
+
+        public void goToFrame()
+        {
+            elementMethod.hoverElement(switchtoElement);
+            elementMethod.clickElement(windowElement);
+            pageMethod.navigatetoURL("https://demo.automationtesting.in/Frames.html");
         }
 
     }
