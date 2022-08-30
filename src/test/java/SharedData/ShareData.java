@@ -11,7 +11,7 @@ public class ShareData {
 
     public WebDriver driver;
 
-    @BeforeMethod
+
     public void prepareDriver(){
         //setez driverul de chrome
         System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
@@ -24,9 +24,9 @@ public class ShareData {
         driver.manage().window().maximize();
     }
 
-    @AfterMethod
+
     public void quitDriver(){
-        //driver.quit();
+         driver.quit();
     }
 
 }

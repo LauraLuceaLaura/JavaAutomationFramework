@@ -1,30 +1,23 @@
 package Test;
 
-import HelpMethods.ElementMethods;
-import HelpMethods.PageMethods;
+import ObjectData.LoginObject;
 import Pages.IndexPage;
 import Pages.LogInPage;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.Assert;
+import SharedData.Hooks;
 import org.testng.annotations.Test;
-import SharedData.ShareData;
 
-public class LoginTest extends ShareData {
+public class LoginTest extends Hooks {
 
     @Test
     public void loginMethod(){
+
+        LoginObject loginTest = new LoginObject(testData);
 
         IndexPage indexPage = new IndexPage(driver);
         indexPage.singInClickOnElement();
 
         LogInPage logIn = new LogInPage(driver);
-        logIn.logInProcess("laura@yahoo.com", "oparola123");
-
-        //inchidem un browser
-        //driver.quit();
+        logIn.logInProcess(loginTest);
 
     }
 }

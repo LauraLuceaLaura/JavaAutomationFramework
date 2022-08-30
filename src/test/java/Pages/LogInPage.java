@@ -1,5 +1,6 @@
 package Pages;
 
+import ObjectData.LoginObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -23,15 +24,15 @@ public class LogInPage extends BasePage
     @FindBy(id = "errormsg")
     private WebElement errormessageElement;
 
-    public void logInProcess(String email, String password)
+    public void logInProcess(LoginObject loginObject)
     {
         //validam o anumita pagina
         pageMethod.validateTitlePage("SignIn");
-        elementMethod.fillElement(emailElement, email);
-        elementMethod.fillElement(passwordElement,password);
+        elementMethod.fillElement(emailElement, loginObject.getEmail());
+        elementMethod.fillElement(passwordElement, loginObject.getPassword());
         elementMethod.clickElement(enterElement);
         //validam un mesaj
-        elementMethod.validateElementText(errormessageElement, "Invalid User Name or PassWord");
+        elementMethod.validateElementText(errormessageElement, loginObject.getMessage());
     }
 
 }
