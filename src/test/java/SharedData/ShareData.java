@@ -1,11 +1,9 @@
 package SharedData;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import java.sql.Driver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 public class ShareData {
 
@@ -14,9 +12,18 @@ public class ShareData {
 
     public void prepareDriver(){
         //setez driverul de chrome
-        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
+        String cicd = System.getProperty("cicd");
+        WebDriverManager.chromedriver().setup();
+        ChromeOptions options = new ChromeOptions();
+        if(Boolean.parseBoolean(cicd))
+        {
+            options.addArguments("--headless");
+        }
+        options.addArguments("--disable-gpu");
+        options.addArguments("--window-size=1920,1080");
+        options.addArguments("--no-sandbox");
         //deschid un browser de chrome
-        driver = new ChromeDriver();
+        driver = new ChromeDriver(options);
         //accesez un anumit URL
         driver.get("https://demo.automationtesting.in/Index.html");
 
