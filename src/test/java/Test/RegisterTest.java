@@ -1,21 +1,23 @@
 package Test;
 
+import ObjectData.RegisterObject;
 import Pages.IndexPage;
 import Pages.RegisterPage;
-import SharedData.ShareData;
+import SharedData.Hooks;
 import org.testng.annotations.Test;
 
-public class RegisterTest extends ShareData {
+public class RegisterTest extends Hooks {
 
     @Test
     public void registerMethod() {
+
+        RegisterObject registerObject = new RegisterObject(testData);
 
         IndexPage indexPage = new IndexPage(driver);
         indexPage.clickSkipSingIn();
 
         RegisterPage registerPage = new RegisterPage(driver);
-        registerPage.registerProcess("Laura","Lucea","Str.1 Nr.2","cod@email.com", "071234567", "Java",
-                "2001","May","18","parola","parola","Australia","English");
+        registerPage.registerProcess(registerObject);
 
     }
 }

@@ -3,10 +3,11 @@ package Test;
 import Pages.IndexPage;
 import Pages.RegisterPage;
 import Pages.WindowPage;
+import SharedData.Hooks;
 import SharedData.ShareData;
 import org.testng.annotations.Test;
 
-public class WindowTest extends ShareData {
+public class WindowTest extends Hooks {
 
     @Test
     public void windowMethod(){

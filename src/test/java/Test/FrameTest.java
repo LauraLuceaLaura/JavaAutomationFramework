@@ -3,10 +3,12 @@ package Test;
 import HelpMethods.ElementMethods;
 import HelpMethods.FrameMethods;
 import HelpMethods.PageMethods;
+import ObjectData.FrameObject;
 import Pages.FramePage;
 import Pages.IndexPage;
 import Pages.RegisterPage;
 import Pages.WindowPage;
+import SharedData.Hooks;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -16,10 +18,13 @@ import SharedData.ShareData;
 
 import java.util.List;
 
-public class FrameTest extends ShareData {
+public class FrameTest extends Hooks {
 
     @Test
     public void frameMethod(){
+
+        FrameObject frameObject = new FrameObject(testData);
+        frameObject.prepareData(testData);
 
         IndexPage indexPage = new IndexPage(driver);
         indexPage.clickSkipSingIn();
@@ -28,8 +33,8 @@ public class FrameTest extends ShareData {
         registerPage.goToFrame();
 
         FramePage framePage = new FramePage(driver);
-        framePage.singleFrame("val");
-        framePage.multipleFrame("valoare");
+        framePage.singleFrame(frameObject);
+        framePage.multipleFrame(frameObject);
 
     }
 }
